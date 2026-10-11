@@ -106,7 +106,7 @@ object Iconographic : ClientModInitializer, MeowddingLogger by MeowddingLogger.a
 
     @Subscription
     context(event: RegisterIconCommandEvent)
-    fun onCommands() {
+    private fun onCommands() {
         event.registerBaseCallback {
             McClient.setScreenAsync { ResourcefulConfigScreen.getFactory("iconographic").apply(null) }
         }

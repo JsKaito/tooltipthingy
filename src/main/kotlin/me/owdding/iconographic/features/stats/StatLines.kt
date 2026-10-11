@@ -13,6 +13,7 @@ import me.owdding.iconographic.system.TooltipFeature
 import me.owdding.iconographic.utils.chat.ChatUtils.mc5
 import me.owdding.iconographic.utils.chat.DisplayColor
 import me.owdding.iconographic.utils.debug.debugToggle
+import me.owdding.ktmodules.Module
 import net.minecraft.client.gui.Font
 import net.minecraft.client.gui.GuiGraphicsExtractor
 import net.minecraft.network.chat.Component
@@ -84,8 +85,6 @@ data object StatLines : TooltipFeature() {
     }
 }
 
-val showStatIds by debugToggle("stat_ids", "Render stat ids next to the line")
-
 val dot = Text.of("·") {
     this.color = DisplayColor.GRAY
     this.font = mc5
@@ -147,6 +146,11 @@ data class StatLine(
         if (isSide && extraValue != null) {
             graphics.text(font, extraValue, x + mainTotalWidth + 16, y, -1)
         }
+    }
+
+    @Module
+    companion object {
+        val showStatIds by debugToggle("stat_ids", "Render stat ids next to the line")
     }
 }
 
