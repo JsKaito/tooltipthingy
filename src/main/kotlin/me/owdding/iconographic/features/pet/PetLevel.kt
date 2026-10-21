@@ -1,7 +1,6 @@
 package me.owdding.iconographic.features.pet
 
 import me.owdding.iconographic.ComponentLike
-import me.owdding.lib.extensions.shorten
 import me.owdding.iconographic.ExtractableTooltipLine
 import me.owdding.iconographic.TooltipLine
 import me.owdding.iconographic.Iconographic.id
@@ -126,10 +125,10 @@ data object PetLevel : TooltipFeature() {
             this.font = ChatUtils.mc5
             this.shadowColor = null
 
-            append(owned.toFormattedString())
+            append(owned.toInt().toFormattedString())
             if (isMaxed) return@of
             append("/")
-            append(required.shorten())
+            append(required.toInt().toFormattedString())
         }
 
         constructor(owner: Float, targetLevel: Int? = null) : this(true, owner, 0f, targetLevel)
