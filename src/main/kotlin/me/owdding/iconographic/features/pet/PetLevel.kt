@@ -1,6 +1,7 @@
 package me.owdding.iconographic.features.pet
 
 import me.owdding.iconographic.ComponentLike
+import me.owdding.lib.extensions.shorten
 import me.owdding.iconographic.ExtractableTooltipLine
 import me.owdding.iconographic.TooltipLine
 import me.owdding.iconographic.Iconographic.id
