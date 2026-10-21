@@ -12,5 +12,6 @@ object PetsConfig : CategoryKt("pets"), AutoTranslated {
     val petAbilities by autoBoolean(true)
     val petHeldItem by autoBoolean(true)
     val petLevel by autoBoolean(true)
+    val petExperienceDecimal by autoBoolean(true)
     val petFavourite by autoBoolean(true)
 }

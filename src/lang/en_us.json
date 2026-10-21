@@ -147,6 +147,10 @@
           "@value": "Pet Level Bar",
           "desc": "Changes pet's levels into a rendered element."
         },
+        "petExperienceDecimal": {
+          "@value": "Decimal Pet Experience",
+          "desc": "Shows decimal places in the pet experience display."
+        },
         "petFavourite": {
           "@value": "Favourite Pet",
           "desc": "Changes favourite pet star into a rendered element."

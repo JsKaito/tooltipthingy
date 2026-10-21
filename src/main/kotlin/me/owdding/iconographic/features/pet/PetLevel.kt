@@ -22,7 +22,7 @@ import net.minecraft.world.item.ItemStack
 import tech.thatgravyboat.skyblockapi.api.datatype.DataTypes
 import tech.thatgravyboat.skyblockapi.utils.extentions.parseFormattedFloat
 import tech.thatgravyboat.skyblockapi.utils.extentions.scissor
-import tech.thatgravyboat.skyblockapi.utils.extentions.toFormattedString
+
 import tech.thatgravyboat.skyblockapi.utils.text.Text
 import tech.thatgravyboat.skyblockapi.utils.text.TextProperties.stripped
 import tech.thatgravyboat.skyblockapi.utils.text.TextProperties.width
@@ -126,10 +126,10 @@ data object PetLevel : TooltipFeature() {
             this.font = ChatUtils.mc5
             this.shadowColor = null
 
-            append(owned.toInt().toFormattedString())
+            append(PetExperienceFormat.format(owned))
             if (isMaxed) return@of
             append("/")
-            append(required.toInt().toFormattedString())
+            append(PetExperienceFormat.format(required))
         }
 
         constructor(owner: Float, targetLevel: Int? = null) : this(true, owner, 0f, targetLevel)
