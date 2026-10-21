@@ -22,6 +22,7 @@ import net.minecraft.world.item.ItemStack
 import tech.thatgravyboat.skyblockapi.api.datatype.DataTypes
 import tech.thatgravyboat.skyblockapi.utils.extentions.parseFormattedFloat
 import tech.thatgravyboat.skyblockapi.utils.extentions.scissor
+import tech.thatgravyboat.skyblockapi.utils.extentions.toFormattedString
 
 import tech.thatgravyboat.skyblockapi.utils.text.Text
 import tech.thatgravyboat.skyblockapi.utils.text.TextProperties.stripped
@@ -38,6 +39,12 @@ data object PetLevel : TooltipFeature() {
 
     const val ARROW = "▸"
     val regex = Regex("^Progress to Level (?<level>\\d+): .*|MAX LEVEL$")
+
+    private fun formatExperience(value: Float): String = if (PetsConfig.petExperienceDecimal) {
+        value.toFormattedString()
+    } else {
+        value.toInt().toFormattedString()
+    }
 
     override fun ItemStack.applies(): Boolean = DataTypes.SKYBLOCK_ID()?.isPet == true
 
@@ -126,10 +133,10 @@ data object PetLevel : TooltipFeature() {
             this.font = ChatUtils.mc5
             this.shadowColor = null
 
-            append(PetExperienceFormat.format(owned))
+            append(PetLevel.formatExperience(owned))
             if (isMaxed) return@of
             append("/")
-            append(PetExperienceFormat.format(required))
+            append(PetLevel.formatExperience(required))
         }
 
         constructor(owner: Float, targetLevel: Int? = null) : this(true, owner, 0f, targetLevel)
