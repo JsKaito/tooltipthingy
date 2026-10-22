@@ -41,7 +41,7 @@ data object PetLevel : TooltipFeature() {
     val regex = Regex("^Progress to Level (?<level>\\d+): .*|MAX LEVEL$")
 
     private fun formatExperience(value: Float): String = if (PetsConfig.petExperienceDecimal) {
-        value.toFormattedString()
+        value.shorten()
     } else {
         value.toInt().toFormattedString()
     }
