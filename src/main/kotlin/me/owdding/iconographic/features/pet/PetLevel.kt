@@ -40,12 +40,6 @@ data object PetLevel : TooltipFeature() {
     const val ARROW = "▸"
     val regex = Regex("^Progress to Level (?<level>\\d+): .*|MAX LEVEL$")
 
-    private fun formatExperience(value: Float): String = if (PetsConfig.petExperienceDecimal) {
-        value.shorten()
-    } else {
-        value.toInt().toFormattedString()
-    }
-
     override fun ItemStack.applies(): Boolean = DataTypes.SKYBLOCK_ID()?.isPet == true
 
     override fun ItemStack.modifyEntries(list: MutableList<TooltipLine>, previousResult: Result?): Result = withComponentMerger(list) {
@@ -106,7 +100,7 @@ data object PetLevel : TooltipFeature() {
                 originalMerger.destination.add(insertIndex++, SeparatorRenderer)
             }
 
-            originalMerger.destination.add(insertIndex++, SpacerLine(height = 3))
+            originalMerger.destination.add(insertIndex, SpacerLine(height = 3))
         }
 
         return@withComponentMerger modified.asResult()
@@ -133,10 +127,10 @@ data object PetLevel : TooltipFeature() {
             this.font = ChatUtils.mc5
             this.shadowColor = null
 
-            append(PetLevel.formatExperience(owned))
+            append(PetsConfig.experienceFormat(owned))
             if (isMaxed) return@of
             append("/")
-            append(PetLevel.formatExperience(required))
+            append(PetsConfig.maxExperienceFormat(required))
         }
 
         constructor(owner: Float, targetLevel: Int? = null) : this(true, owner, 0f, targetLevel)

@@ -147,9 +147,18 @@
           "@value": "Pet Level Bar",
           "desc": "Changes pet's levels into a rendered element."
         },
-        "petExperienceDecimal": {
-          "@value": "Decimal Pet Experience",
-          "desc": "Shows decimal places in the pet experience display."
+        "experienceFormat": {
+          "@value": "Experience format",
+          "desc": "The formatting type to use for the current pet experience."
+        },
+        "maxExperienceFormat": {
+          "@value": "Max Experience format",
+          "desc": "The formatting type to use for the maximum pet experience."
+        },
+        "display_type": {
+          "shortened": "Shortened (1M)",
+          "integer": "Integer",
+          "decimals": "Decimal"
         },
         "petFavourite": {
           "@value": "Favourite Pet",
